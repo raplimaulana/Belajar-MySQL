@@ -1,0 +1,14 @@
+### BENTUK NORMAL BASIS DATA KE 2 ###
+
+##Bentuk Normal Basis Data ke 2
+- Harus sudah dalam bentuk normal basis data ke 1.
+- Buat tabel terpisah untuk nilai-nilai yang keluar berulang kali pada beberapa baris.
+- Tambahkan primary key pada tiap tabel.
+- Hubungkan menggunakan foreign key.
+
+##Revisi Contoh Kasus : Bentuk Normal ke 2
+Kolom-kolom Produk terdapat yang berulang
+Kolom-kolom Order, Penjual dan Pembeli terdapat yang berulang
+
+#Bentuk Tabel (Bentuk Normal ke 2)
+*Lihat Folder Contoh Normaliasi Data > Second Normal Form

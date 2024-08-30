@@ -1,0 +1,37 @@
+### FLOW CONTROL FUNCTION ###
+MySQL memiliki fitur flow control function.
+Ini mirip IF ELSE di bahasa pemrograman.
+Tapi ingat, fitur ini tidak se kompleks yang dimiliki bahasa pemrograman.
+https://dev.mysql.com/doc/refman/8.0/en/flow-control-functions.html 
+
+-------------------------------------------
+| Name     |         Description          |
+|----------|------------------------------|
+| CASE     | Case operator                |
+|----------|------------------------------|
+| IF()     | If/else construct            |
+|----------|------------------------------|
+| IFNULL() | Null if/else construct       |
+|----------|------------------------------|
+| NULLIF() | Return NULL if expr1 = expr2 |
+|----------|------------------------------|
+
+1. Menggunakan Control Flow CASE 
+   SELECT id,
+      CASE category
+      WHEN 'Makanan' THEN 'Enak'
+      WHEN 'Minuman' THEN 'Segar'
+      ELSE 'Apa itu?'
+      END AS 'category'
+   FROM products;
+
+2. Menggunakan Control Flow IF
+   SELECT id, price
+      IF(price <= 15000, 'Murah',
+         IF(price <= 20000, 'Mahal', 'Mahal Banget')
+      ) AS 'Mahal?'
+   FROM products;
+
+3. Menggunakan Control Flow IFNULL
+   SELECT id, nama, IFNULL(description, 'Kosong')
+   FROM products;

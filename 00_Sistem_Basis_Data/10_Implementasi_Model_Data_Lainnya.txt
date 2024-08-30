@@ -1,0 +1,4 @@
+### IMPLEMENTASI MODEL DATA LAINNYA ###
+Sekarang kita akan coba lihat bagaimana implementasi perubahan model data yang sudah kita lakukan di materi sebelumnya.
+
+*Lihat ss

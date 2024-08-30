@@ -1,0 +1,18 @@
+### TIPE DATA DATE DAN TIME ###
+Selain tipe data Number dan String, biasanya kadang kita sering menyimpan data waktu atau tanggal.
+Sebenarnya bisa kita gunakan String untuk menyimpan data waktu atau tanggal, namun itu tidak di rekomendasikan, karena akan menyulitkan kita ketika nanti butuh melakukan manipulasi waktu atau tanggal di MySQL.
+
+##Jenis-Jenis Tipe Data Date dan Time
+------------------------------------------------------------------------
+| Tipe Data Date dan Time | Format               |       Contoh        |
+|-------------------------|----------------------|---------------------|
+| DATE                    | YYYY-MM-DD           | 2024-10-10          |
+|-------------------------|----------------------|---------------------|
+| DATETIME                | YYYY-MM-DD HH-MM-SS  | 2024-10-10 10:10:10 |
+|-------------------------|----------------------|---------------------|
+| TIMESTAMP               | YYYY-MM-DD HH-MM-SS  | 2024-10-10 10:10:10 |
+|-------------------------|----------------------|---------------------|
+| TIME                    | HH-MM-SS             | 10:10:10            |
+|-------------------------|----------------------|---------------------|
+| YEAR                    | YYYY                 | 2024                |
+|-------------------------|----------------------|---------------------|

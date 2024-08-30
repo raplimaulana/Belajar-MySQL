@@ -1,0 +1,101 @@
+### BENTUK NORMAL BASIS DATA KE 3 ###
+
+##Ketergantungan Fungsionalitas
+Sebelum kita bahas tentang bentuk normal ke 3, kita harus tahu tentang ketergantungan fungsionalitas.
+Dalam tabel, jika terdapat atribut B memiliki ketergantungan fungsionalitas dengan A, maka kita bisa bilang A --> B.
+Biasanya A adalah attribute key, dan B adalah attribute yang bukan key.
+Dalam bentuk normal ke 3, kita harus teliti tabel yang sudah dalam bentuk normal ke 2, apakah attribute-attribute yang bukan key tersebut tergantung dengan attribute key nya?
+
+##Bentuk Normal Basis Data ke 3
+Pindahkan kolom-kolom yang tidak tergantung ke key menjadi tabel lain.
+Hal ini dikarenakan jika terjadi perubahan pada kolom tersebut, ditakutkan perlu melakukan perubahan di banyak baris.
+
+##Revisi Contoh Kasus : Bentuk Normal ke 3
+Ada banyak kolom yang tidak tergantung dengan key
+Contoh Penjual, Pembeli, Alamat Pengiriman
+Kolom-kolom tersebut jika berubah, maka harus diubah di semua baris Order lainnya, dan itu membuat data tidak konsisten
+
+#Bentuk Tabel (Bentuk Normal ke 2)
+*Lihat Folder Contoh Normaliasi Data > Third Normal Form
+
+---
+
+### Contoh PlantUML ###
+nano toko.puml
+
+@startuml
+
+entity Produk {
+    kode : text <PK>
+    --
+    nama : text
+    berat : number
+    harga : number
+}
+
+entity Order {
+    kode : text <PK>
+    --
+    kode_pembeli : text <FK>
+    kode_alamat : text <FK>
+    kode_metode_pembayaran : text <FK>
+    kode_kurir : text <FK>
+    --
+    tanggal : date
+    total_ongkos : number
+    biaya_jasa : number
+}
+
+entity DetailOrder {
+    kode_produk : text <PK> <FK>
+    kode_order : text <PK> <FK>
+    --
+    jumlah : number
+}
+
+entity Pembeli {
+    kode : text <PK>
+    --
+    nama : text
+}
+
+entity Penjual {
+    kode : text <PK>
+    --
+    nama : text
+}
+
+entity Alamat{
+    kode : text <PK>
+    --
+    kode_pembeli : text <FK>
+    --
+    nama : text
+    alamat : text
+    kode_pos : text
+    kota : text
+    provinsi : text
+    negara : text
+}
+
+entity MetodePembayaran {
+    kode : text <PK>
+    --
+    nama : text
+}
+
+entity Kurir {
+    kode : text <PK>
+    --
+    nama : text
+}
+
+Order ||--|{ DetailOrder
+DetailOrder ||--|{ Produk
+Pembeli ||--o{ Alamat
+Alamat ||--o{ Order
+Penjual ||--o{ Produk
+MetodePembayaran ||--o{ Order
+Kurir ||--o{ Order
+
+@enduml

@@ -1,0 +1,30 @@
+### IMPLEMENTASI MODEL DATA ###
+
+##Implementasi Model Data
+Implementasi model data merupakan tahapan untuk membuat basis data secara fisik yang ditempatkan dalam disk dengan bantuan sistem basis data.
+Setelah selesai membuat ERD, kita bisa mulai membuat implementasi nya dalam basis data.
+
+##Implementasi Umum
+Secara umum, Entity yang kita buat di dalam ERD akan menjadi tabel di dalam basis data.
+Dan Attribute yang kita buat dalam ERD, akan menjadi kolom di tabel di dalam basis data.
+
+##Kamus Data
+Dalam sistem basis data, setiap kolom di tabel yang kita buat perlu ditentukan tipe datanya.
+Penentuan tipe data biasanya mengikuti tipe data yang tersedia di sistem basis data yang kita gunakan.
+Secara umum ada beberapa tipe data yang umum biasa digunakan di sistem basis data.
+
+##Tipe Data
+1. Text 
+   Kolom yang berisikan data karakter, misal Nama, Alamat, dan sejenisnya
+
+2. Number 
+   Kolom yang berisikan data angka, misal Harga, Stok, dan sejenisnya
+
+3. Date, Time, Timestamp 
+   Kolom yang berisikan data tanggal, waktu atau gabungan tanggal dan waktu, misalnya Tanggal Lahir, Waktu Pendaftaran, dan sejenisnya
+
+4. Boolean 
+   Kolom yang berisikan data benar (true) atau salah (false), misal Status Menikah, dan sejenisnya
+
+5. Dan lain lain
+   Masih banyak tipe data lainnya, ntuk detail tipe data tidak akan dibahas di materi ini, karena sudah sangat spesifik ke aplikasi sistem basis yang kita gunakan.

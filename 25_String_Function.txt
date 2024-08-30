@@ -1,0 +1,10 @@
+### STRING FUNCTION ###
+Sama seperti number, di MySQL juga banyak menyediakan function untuk tipe data String.
+Ada banyak sekali function-function yang bisa kita gunakan (https://dev.mysql.com/doc/refman/8.0/en/string-functions.html).
+
+##Menggunakan String Function
+SELECT id, LOWER(nama), as 'Name Lower'
+FROM products;
+
+SELECT id, LENGTH(nama), as 'Name Length'
+FROM products;

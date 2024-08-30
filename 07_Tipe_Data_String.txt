@@ -1,0 +1,45 @@
+### TIPE DATA STRING ###
+Selain number, biasanya kita sering menyimpan data di dalam tabel dalam bentuk tulisan
+Tipe data ini namanya tipe data String atau Text
+
+Ada banyak tipe data String di MySQL.
+1. CHAR dan VARCHAR
+   Kita bisa menentukan jumlah panjang maksimal karakter yang bisa ditampung oleh CHAR dan VARCHAR dengan menggunakan kurung buka lalu masukan jumlah maksimal karakter dan diakhiri kurung tutup.
+   Misal, CHAR(10) atau VARCHAR(10) artinya tipe data String dengan maksimal jumlah karakternya adalah 10 karakter.
+   Maksimum ukuran CHAR atau VARCHAR adalah 65535 karakter.
+
+   -----------------------------------------------------------------------------
+   | Value      | CHAR (4) | Storage Required | VARCHAR (4) | Storage Required |
+   |------------|----------|------------------|-------------|------------------|
+   | ''         | '    '   | 4 bytes          | ''          | 1 bytes          |
+   |------------|----------|------------------|-------------|------------------|
+   | 'ab'       | 'ab  '   | 4 bytes          | 'ab'        | 3 bytes          |
+   |------------|----------|------------------|-------------|------------------|
+   | 'abcd'     | 'abcd'   | 4 bytes          | 'abcd'      | 5 bytes          |
+   |------------|----------|------------------|-------------|------------------|
+   | 'abcdefgh' | 'abcd'   | 4 bytes          | 'abcd'      | 5 bytes          |
+   -----------------------------------------------------------------------------
+
+2. TEXT
+   Berbeda dengan CHAR dan VARCHAR yang kita bisa tentukan panjang maksimum nya, TEXT tidak sudah memiliki maksimum  panjang nya.
+   Terdapat 4 tipe data TEXT:
+   - TINYTEXT 
+     Maksimum 255 karakter (~256 bytes).
+
+   - TEXT 
+     Maksimum 65535 karakter ( ~64 kb).
+
+   - MEDIUMTEXT 
+     Maksimum 16777215 karakter (~16MB).
+
+   - LONGTEXT 
+     Maksimum 4294967295 karakter (~4GB).
+
+3. ENUM
+   ENUM adalah tipe data String yang bisa kita tentukan pilihan pilihannya
+   Misal kita bisa membuat: 
+   - ENUM(‘Pria’, ‘Wanita’)
+     Artinya hanya bisa menerima data Pria atau Wanita.
+
+   - ENUM(‘Programmer’, ‘Zaman’, ‘Now’)
+     Artinya hanya bisa menerima data Programmer, Zaman atau Now.

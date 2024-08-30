@@ -1,0 +1,129 @@
+### TABLE ###
+Data biasanya disimpan di dalam tabel di MySQL
+Tiap tabel biasanya menyimpan satu jenis data, misal ketika kita membuat aplikasi toko online, kita akan membuat tabel barang, tabel pelanggan, tabel penjual, dan lain-lain.
+Sebelum kita bisa memasukkan data ke tabel, kita wajib terlebih dahulu membuat tabelnya terlebih dahulu.
+Dan tiap tabel yang kita buat, wajib ditentukan kolom-kolom nya, dan tipe data tiap kolom nya.
+Kita juga bisa mengubah tabel yang sudah terlanjur dibuat, seperti menambah kolom baru, mengubah kolom yang sudah ada, atau menghapus kolom.
+
+##Storage Engines
+MySQL memiliki berbagai cara melakukan pengolahan data, hal ini disebut Storage Engines.
+Saat ini, yang biasa dan populer digunakan adalah InnoDB.
+
+SHOW ENGINES; 
+
+-------------------------------------------------------------------------------------------------------------------------------------
+| Enginr             | Support |                           Comment                               | Transictions | XA   | Savepoints |
+|--------------------|---------|-----------------------------------------------------------------|--------------|------|------------|
+| ARCHIVE            | YES     | Archive storage engine                                          | NO           | NO   | NO         |
+|--------------------|---------|-----------------------------------------------------------------|--------------|------|------------|
+| BLACKHOLE          | YES     | /dev/null storage engine (anything you write to it dissappears) | NO           | NO   | NO         |
+|--------------------|---------|-----------------------------------------------------------------|--------------|------|------------|
+| MRG_MYISAM         | YES     | Collection of identical MyISAM tables                           | NO           | NO   | NO         |
+|--------------------|---------|-----------------------------------------------------------------|--------------|------|------------|
+| FEDERATED          | NO      | Federated MySQL storage engine                                  | NULL         | NULL | NULL       |
+|--------------------|---------|-----------------------------------------------------------------|--------------|------|------------|
+| MyISAM             | YES     | MyISAM storage engine                                           | NO           | NO   | NO         |
+|--------------------|---------|-----------------------------------------------------------------|--------------|------|------------|
+| PERFORMANCE_SCHEMA | YES     | Performance Schema                                              | NO           | NO   | NO         |
+|--------------------|---------|-----------------------------------------------------------------|--------------|------|------------|
+| InnoDB             | DEFAULT | Supports transaction, row-level locking and foreign keys        | YES          | YES  | YES        |
+|--------------------|---------|-----------------------------------------------------------------|--------------|------|------------|
+| MEMORY             | YES     | Hash bashed, stored in memory. Usefull for temporary tables     | NO           | NO   | NO         |
+|--------------------|---------|-----------------------------------------------------------------|--------------|------|------------|
+| CSV                | YES     | CSV storage engine                                              | NO           | NO   | NO         |
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+##Melihat Table
+SHOW TABLES;
+
+##Membuat Table
+CREATE TABLE barang
+(
+    kode    INT,
+    nama    VARCHAR(100),
+    harga   INT,
+    jumlah  INT
+) ENGINE = InnoDB;
+
+##Melihat Struktur Table
+DESCRIBE barang;
+DESC barang;
+SHOW CREATE TABLE barang;
+
+##Mengubah Table
+ALTER TABLE barang
+ADD COLUMN deskripsi TEXT;
+
+ALTER TABLE barang
+DROP COLUMN deskripsi_salah;
+
+ALTER TABLE barang
+RENAME COLUMN deskripsi_salah TO deskripsi;
+
+ALTER TABLE barang
+MODIFY nama VARCHAR(100) AFTER deskripsi;
+
+ALTER TABLE barang
+MODIFY nama VARCHAR(100) FIRST;
+
+ALTER TABLE barang
+    ADD COLUMN deskripsi TEXT,
+    DROP COLUMN deskripsi_salah,
+    RENAME COLUMN deskripsi_salah TO deskripsi,
+    MODIFY nama VARCHAR(100) AFTER deskripsi,           #mengubah struktur kolom nama dan memindahkan posisinya ke sebelah kolom deskripsi
+    MODIFY nama VARCHAR(100) FIRST;                     ##mengubah struktur kolom nama dan memindahkan posisinya ke paling awal kolow sebelah kiri
+
+##Null Value
+Null adalah nilai ketika kita tidak mengisi data ke dalam kolom.
+Secara default, saat kita membuat kolom, kolom tersebut bisa bernilai NULL, jika kita tidak ingin menerima nilai NULL, kita bisa menambahkan NOT NULL ketika pembuatan kolom nya.
+
+- Membuat table baru
+
+  CREATE TABLE barang
+  (
+      kode    INT NOT NULL,
+      ...
+  ) ENGINE = InnoDB;
+
+- Mengubah Table  
+
+  ALTER TABLE barang
+  MODIFY kode INT NOT NULL;
+
+  ALTER TABLE barang
+  MODIFY nama VARCHAR(100) NOT NULL;
+
+##Default Value
+Saat kita menyimpan data ke dalam tabel, lalu kita hanya menyimpan beberapa kolom (tidak semuanya), kolom yang tidak kita beri nilai secara default nilainya adalah NULL.
+Jika kita ingin mengubah default value nya, kita bisa menambahkan perintah DEFAULT NILAI ketika pembuatan kolom nya.
+Khusus tipe data DATETIME atau TIMESTAMP, jika kita ingin menggunakan default value dengan nilai waktu saat ini, kita bisa gunakan kata kunci CURRENT_TIMESTAMP.
+
+- Membuat table baru
+
+  CREATE TABLE barang
+  (
+      kode    INT NOT NULL,
+      nama    VARCHAR(100) NOT NULL DEFAULT 'Rapli',
+      harga   INT NOT NULL DEFAULT 0,
+      jumlah  INT NOT NULL DEFAULT 0
+  ) ENGINE = InnoDB;
+
+- Mengubah Table  
+
+  ALTER TABLE barang
+  MODIFY kode INT NOT NULL 0;
+
+  ALTER TABLE barang
+  MODIFY nama VARCHAR(100) NOT NULL DEFAULT 'Rapli';
+
+  ALTER TABLE barang
+  ADD waktu_dibuat TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
+##Membuat Ulang Table
+TRUNCATE nama_tabel;
+
+*menghapus semua data, kemudian membuat ulang table
+
+##Menghapus Table
+DROP TABLE nama_tabel;

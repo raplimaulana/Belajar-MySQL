@@ -1,0 +1,31 @@
+### MODEL DATA LAINNYA ###
+Sebenarnya sampai materi Model Data Relational, kita sudah mulai bisa membuat basis data yang baik.
+Namun, pada kasus-kasus tertentu, kadang ada jenis model data lainnya.
+Di materi ini, kita akan coba bahas beberapa model data lainnya, seperti :
+1. Weak Entity (entitas lemah)
+   Entitas lemah sebenarnya adalah entitas biasa, namun sifatnya lemah, artinya dia tidak bisa berdisi sendiri.
+   Weak entity biasanya berelasi dengan entity utama.
+   Contoh pada kasus sebelumnya Dompet bisa dibilang weak entity, karena tidak bisa berdirisi sendiri tanpa adanya Pembeli.
+   Atau, kita bisa pisahkan alamat menjadi entitas lemah, yang hanya bisa ada jika terdapat entitas Pembeli.
+
+2. Sub Entity (entitas turunan)
+   Saat membuat entity, bisa terjadi adanya beberapa entity yang lebih detail, yang memiliki kesamaan atribut, namun terdapat juga perbedaan nya.
+   Contoh, pada kasus Entity Barang, kemungkinan akan ada banyak jenis barang, dan tiap jenis barang bisa berbeda atribut yang dimilikinya.
+   Misal saja kita tambahkan Entity Barang Laptop dan Barang Pakaian, kedua entity tersebut memiliki kesamaan, namun memiliki perbedaan juga.
+   Untuk menggambarkan Sub Entity, kita akan menggunakan diagram ISA.
+
+3. Unary Relationship (relasi tunggal)
+   Unary Relationship adalah relasi yang terjadi pada entitas dengan entitas dirinya sendiri.
+   Hal ini sering sekali terjadi.
+   Misal, pada kasus Toko Online, misal kita akan menambah fitur Referal (Member get Member), dan kita akan membolehkan Pembeli merekomendasikan Pembeli lain untuk mendapat bonus berupa saldo tertentu misalnya.
+   Pada kasus ini, berarti kita harus membuat Unary Relationship dari Pembeli ke Pembeli lagi.
+
+4. Multi Entity Relationship (relasi multi entitas)
+   Relasi multi entitas merupakan relasi yang terjadi terhadap lebih dari dua entitas.
+   Pada kasus sebelumnya contohnya Pembeli memiliki relasi membeli dengan Barang.
+   Misal kita akan tambahkan Bank dengan relasi Pembeli membeli Barang, menggunakan Bank.
+
+5. Redundant Relationship (relasi ganda)
+   Relasi antar entitas boleh lebih dari satu, jika ada dua entitas memiliki relasi lebih dari satu antar entitas tersebut, artinya itu adalah relasi ganda.
+   Banyak kasus seperti ini, contohnya pada kasus relasi Pembeli dan Barang, misal kita tambahkan relasi Pembeli menyukai Barang.
+   Artinya tidak hanya Membeli, tapi juga Menyukai.

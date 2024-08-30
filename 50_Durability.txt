@@ -1,0 +1,14 @@
+### DURABILITY ###
+Durability menjamin bahwa sekali transaksi telah disimpan, itu akan tetap disimpan bahkan dalam kasus kegagalan sistem (misalnya, pemadaman listrik atau crash).
+
+##Transfer Gagal
+START TRANSACTION;
+
+SELECT * FROM accounts WHERE id IN ('rapli', 'aji') FOR UPDATE;
+
+UPDATE accounts SET balance = balance - 50000
+WHERE id = 'rapli';
+
+SELECT * FROM accounts;
+
+##shutdown mysql## 

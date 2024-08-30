@@ -1,0 +1,25 @@
+### BASIS DATA ###
+
+##Operasi Basis Data
+Di dalam disk, basis data bisa dibuat atau juga dihapus atau juga diubah. Dan biasanya kita akan buat basis data dalam file berbeda tergantung jenis datanya, misal file pegawai, pelanggan, penjualan dan lain-lain.
+Dalam basis data, operasi basis data dikenal dengan operasi CRUD (Create, Read, Update dan Delete).
+- Create (Membuat data baru)
+- Read (Membaca / mencari data)
+- Update (Mengubah data yang sudah ada)
+- Delete (Menghapus data)
+
+##Tujuan Basis Data
+- Speed (Kecepatan dalam mengambil / mencari data)
+- Space (Efisiensi dalam ruang penyimpanan)
+- Accuracy (Data yang akurat)
+- Availability (Ketersediaan data)
+- Completeness (Kelengkapan data)
+- Security (Keamanan data)
+- Shareability (Kemudahan berbagi data)
+
+##Contoh Penerapan Basis Data
+- Bank, dalam mengelola data nasabah, tabungan, transaksi, dan lain-lain
+- Rumah sakit, dalam mengelola data pasien, history rawat, dokter dan lain-lain
+- Sekolah, dalam mengelola data guru, pelajar, mata pelajaran, nilai ujian, dan lain-lain
+- Toko Online, dalam mengelola data pelanggan, penjualan, barang, pembelian, pengiriman, dan lain-lain
+

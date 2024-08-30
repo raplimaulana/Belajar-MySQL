@@ -1,0 +1,17 @@
+### WHERE CLAUSE ###
+Saat mengambil data menggunakan perintah SQL SELECT, kadang kita ingin melakukan pencarian data.
+Misal, kita ingin mengambil data barang yang harganya 1jt, atau mengambil data barang yang quantity nya 0 (stok nya kosong).
+Hal ini bisa kita lakukan dengan WHERE clause setelah perintah SELECT.
+
+##Mencari Data
+SELECT id, name, price, quantity 
+FROM products
+WHERE quantity = 0;
+
+SELECT id, name, price, quantity 
+FROM products
+WHERE name = "Mie Ayam Bakso";
+
+SELECT id, name, price, quantity 
+FROM products
+WHERE name = "mie ayam bakso";          #hasilnya tetap akan mencari kolom nama dengan isi 'Mie Ayam Bakso'

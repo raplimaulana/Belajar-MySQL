@@ -1,0 +1,135 @@
+### WHERE OPERATOR ###
+Sebelumnya di materi where clause kita sudah menggunakan operator = (sama dengan).
+Sebenarnya sangat banyak sekali operator yang bisa kita gunakan ketika menggunakan where clause.
+Sekarang kita akan bahas satu per satu.
+
+1. Operator Perbandingan
+   ---------------------------------------------
+   | Operator   |         Keterangan           |
+   |------------|------------------------------|
+   | =          | Sama dengan                  |
+   |------------|------------------------------|
+   | <> atau != | Tidak sama dengan            |
+   |------------|------------------------------|
+   | <          | Kurang dari                  |
+   |------------|------------------------------|
+   | <=         | Kurang dari atau sama dengan |
+   |------------|------------------------------|
+   | >          | Lebih dari                   |
+   |------------|------------------------------|
+   | >=         | Lebih dari atau sama dengan  |
+   |------------|------------------------------|
+
+   #Mencari Data dengan Operator Perbandingan
+   SELECT id, name, price, quantity
+   FROM products
+   WHERE quantity > 100;
+
+2. AND dan OR Operator
+   Kadang kita ingin mencari data dengan beberapa gabungan kondisi, kita bisa menggunakan operator AND dan OR
+   AND dan OR digunakan untuk menggabungkan beberapa dua operator.
+
+   - Hasil Operator AND 
+     ----------------------------------------------------------------
+     | Hasil Operator 1 | Operator | Hasil Operator 2 | Hasil Akhir |
+     |------------------|----------|------------------|-------------|
+     | Benar            | AND      | Benar            | Benar       |
+     |------------------|----------|------------------|-------------|
+     | Salah            | AND      | Benar            | Salah       |
+     |------------------|----------|------------------|-------------|
+     | Benar            | AND      | Salah            | Salah       |
+     |------------------|----------|------------------|-------------|
+     | Salah            | AND      | Salah            | Salah       |
+     |--------------------------------------------------------------|
+
+     #Mencari Data dengan Operator AND
+     SELECT id, name, price, quantity
+     FROM products
+     WHERE category = 'Makanan' AND price > 100000;
+
+   - Hasil Operator OR 
+     ----------------------------------------------------------------
+     | Hasil Operator 1 | Operator | Hasil Operator 2 | Hasil Akhir |
+     |------------------|----------|------------------|-------------|
+     | Benar            | OR       | Benar            | Benar       |
+     |------------------|----------|------------------|-------------|
+     | Salah            | OR       | Benar            | Benar       |
+     |------------------|----------|------------------|-------------|
+     | Benar            | OR       | Salah            | Benar       |
+     |------------------|----------|------------------|-------------|
+     | Salah            | OR       | Salah            | Salah       |
+     |--------------------------------------------------------------|
+
+     #Mencari Data dengan Operator AND
+     SELECT id, name, price, quantity
+     FROM products
+     WHERE category = 'Makanan' OR price > 100000;
+
+     #Prioritas dengan Kurung ()
+     
+
+3. Prioritas dengan Kurung ()
+   SELECT id, name, price, quantity
+   FROM products
+   WHERE (category = 'Makanan' OR quantity > 500)
+     AND price > 100000;
+
+4. LIKE Operator
+   LIKE operator adalah operator yang bisa kita gunakan untuk mencari sebagian data dalam String.
+   Ini cocok sekali ketika kita hanya ingin mencari sebagian kata dalam String.
+   Namun perlu diingat, operasi LIKE itu sangat lambat, oleh karena itu, tidak disarankan jika datanya sudah terlalu besar di tabel.
+   Operasi LIKE tidak case sensitive, jadi huruf besar dan kecil tidak akan berpengaruh.
+
+   #Hasil Operator LIKE
+   -------------------------------------------------
+   | Like Operator   |           Hasil              |
+   |-----------------|------------------------------|
+   | LIKE 'a%'       | String dengan awalan a       |
+   |-----------------|------------------------------|
+   | LIKE '%a'       | String dengan akhiran a      |
+   |-----------------|------------------------------|
+   | LIKE '%rapli%'  | String berisi rapli          |
+   |-----------------|------------------------------|
+   | NOT LIKE        | Tidak LIKE                   |
+   |-----------------|------------------------------|
+   
+   #Mencari Menggunakan LIKE Operator
+   SELECT *
+   FROM products
+   WHERE name LIKE '%mie%';
+
+5. NULL Operator
+   Untuk mencari data yang berisi NULL, kita tidak bisa menggunakan operator perbandingan = NULL.
+   Ada operator khusus untuk mencari data NULL, yaitu menggunakan NULL operator.
+   - IS NULL
+     Artinya mencari yang NULL.
+
+     SELECT *
+     FROM products
+     WHERE description IS NULL;
+
+   - IS NOT NULL 
+     Artinya mencari yang tidak NULL.
+
+     SELECT *
+     FROM products
+     WHERE description IS NOT NULL;
+
+6. BETWEEN Operator
+   Kadang kita ingin mencari data yang >= dan <= secara sekaligus.
+   Misal kita ingin mencari products yang harganya antara 10000 sampai 20000.
+   Untuk melakukan ini, kita bisa menggunakan WHERE price >= 10000 AND price <= 20000.
+   Namun ada operator BETWEEN yang bisa kita gunakan agar lebih sederhana.
+   Untuk kebalikannya, kita bisa gunakan NOT BETWEEN.
+
+   SELECT *
+   FROM products
+   WHERE price BETWEEN 10000 AND 20000;
+
+7. IN Operator
+   Operator IN adalah operator untuk melakukan pencarian sebuah kolom dengan beberapa nilai.
+   Misal kita ingin mencari products dengan category Makanan atau Minuman, maka kita bisa menggunakan operator IN.
+
+   SELECT *
+   FROM products
+   WHERE product IN ('Makanan', 'Minuman');

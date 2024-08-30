@@ -1,0 +1,59 @@
+### SET OPERATOR ###
+MySQL mendukung operator Set, dimana ini adalah operasi antara hasil dari dua SELECT query. 
+
+##Membuat Table dengan Guest Book
+CREATE TABLE products
+(
+    id          INT NOT NULL AUTO_INCREMENT,
+    email       VARCHAR(100) NOT NULL,
+    title       VARCHAR(100) NOT NULL,
+    content     TEXT,
+    PRIMARY KEY (id),
+);
+
+Ada banyak jenis operator Set, yaitu :
+1. UNION
+   UNION adalah operasi menggabungkan dua buah SELECT query, dimana jika terdapat data yang duplikat, data duplikatnya akan dihapus dari hasil query.
+
+   #Melakukan Query UNION
+   SELECT DISTINCT email FROM customers
+   UNION
+   SELECT DISTINCT email FROM guestbooks;
+
+2. UNION ALL
+   UNION ALL adalah operasi yang sama dengan UNION, namun data duplikat tetap akan ditampilkan di hasil query nya.
+
+   #Melakukan Query UNION ALL
+   SELECT DISTINCT email FROM customers
+   UNION
+   SELECT DISTINCT email FROM guestbooks;
+
+   SELECT email, COUNT(email)
+   FROM (SELECT DISTINCT email FROM customers
+         UNION ALL
+         SELECT DISTINCT email FROM guestbooks) as emails 
+   GROUP BY email;
+
+3. INTERSECT
+   INTERSECT adalah operasi menggabungkan dua query, namun yang diambil hanya data yang terdapat pada hasil query pertama dan query kedua.
+   Data yang tidak hanya ada di salah satu query, kan dihapus di hasil operasi INTERSECT. 
+   Data nya muncul tidak dalam keadaan duplikat.
+   Sayangnya, MySQL tidak memiliki operator INTERSECT, dengan demikian untuk melakukan operasi INTERSECT, kita harus lakukan secara manual menggunakan JOIN atau SUBQUERY.
+
+   #Melakukan Query INTERSECT
+   SELECT DISTINCT email FROM customers
+   WHERE email IN (SELECT DISTINCT email FROM guestbooks);
+
+   SELECT DISTINCT customers.email FROM customers
+   INNER JOIN guestbooks ON (guestbooks.email = customers.email);
+
+4. MINUS
+   MINUS adalah operasi dimana query pertama akan dihilangkan oleh query kedua.
+   Artinya jika ada data di query pertama yang sama dengan data yang ada di query kedua, maka data tersebut akan dihapus dari hasil query MINUS.
+   Sayangnya, di MySQL juga tidak ada operator MINUS, namun hal ini bisa kita lakukan menggunakan JOIN.
+
+   #Melakukan Query MINUS
+   SELECT DISTINCT customers.email, guestbooks.email FROM customers
+   LEFT JOIN guestbooks ON (guestbooks.email = customers.email)
+   WHERE guestbooks.email IS NULL;
+

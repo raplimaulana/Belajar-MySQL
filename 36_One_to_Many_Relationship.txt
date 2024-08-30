@@ -1,0 +1,27 @@
+### ONE TO MANY RELATIONSHIP ###
+One to many relationship adalah relasi antar tabel dimana satu data bisa digunakan lebih dari satu kali di tabel relasinya.
+Berbeda dengan one to one yang cuma bisa digunakan maksimal 1 kali di tabel relasinya, one to many tidak ada batasan berapa banyak data digunakan.
+Contoh relasi antar tabel categories dan products, dimana satu category bisa digunakan oleh lebih dari satu product, yang artinya relasinya nya one category to many products.
+Pembuatan relasi one to many sebenarnya sama dengan one to one, yang membedakan adalah, kita tidak perlu menggunakan UNIQUE KEY, karena datanya memang bisa berkali-kali ditambahkan di tabel relasi nya.
+
+##Membuat One to Many Relationship
+#Membuat Table Category
+CREATE TABLE category
+(
+    id          VARCHAR(10) NOT NULL,
+    name        VARCHAR(100) NOT NULL,
+    balance     INT NOT NULL DEFAULT 0,
+    PRIMARY KEY (id),    
+);
+
+#Mengubah Tabel Product
+ALTER TABLE products
+    DROP column category;
+
+ALTER TABLE products
+    ADD COLUMN id_category VARCHAR(100);
+
+ALTER TABLE products
+    ADD CONSTRAINT fk_product_category
+        FOREIGN KEY (id_category) REFERENCES categories (id);
+

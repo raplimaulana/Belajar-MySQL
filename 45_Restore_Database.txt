@@ -1,0 +1,7 @@
+### RESTORE DATABASE ###
+Selain melakukan backup database, di MySQL juga kita bisa melakukan proses restore data dari file hasil backup.
+Untuk melakukan restore database, kita bisa menggunakan aplikasi mysql client atau menggunakan perintah SOURCE di MySQL.
+
+##Melakukan Import Database
+./bin/mysqldump belajar_mysql --user root --password --result-file=/home/rapli/backup.sql 
+
